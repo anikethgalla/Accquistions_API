@@ -1,10 +1,10 @@
-import express from 'express'
+import express from 'express';
 
 
-const app = express()
+const app = express();
 
 app.get('/',(req,res)=>{
-    res.status(200).send('Hello from acquisitions API')
-})
+  res.status(200).send('Hello from acquisitions API');
+});
 
-export default app
+export default app;
