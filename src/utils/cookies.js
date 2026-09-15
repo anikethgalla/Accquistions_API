@@ -1,17 +1,17 @@
 export const cookied = {
   getOptions : () => ({
     httpOnly:true,
-    secure:process.env.NODE_ENV,
+    secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict',
-    maxAge:15*60*100
+    maxAge: 15 * 60 * 1000
   }),
 
   set:(res,name,value,options={}) =>{
-    res.cookie(name,value,{ ...cookieStore.getOptions(), ...getOptions});
+    res.cookie(name, value, { ...cookied.getOptions(), ...options });
   },
 
   clear: (res, name,options ={})=>{
-    res.clearCookie(name,{ ...cookies.getOptions(), ...options});
+    res.clearCookie(name, { ...cookied.getOptions(), ...options });
   },
 
   get: (req,name)=>{

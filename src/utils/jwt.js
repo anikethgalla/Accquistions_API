@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import logger from '#config/logger.js'
+import logger from '#config/logger.js';
 const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key'; // Replace with your own secret key
 
 const JWT_EXPIRES_IN = '1d';
@@ -10,7 +10,7 @@ export const jwttoken = {
       return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN });
     }catch(e){
       logger.error('Error signing JWT token:', e);
-      throw new Error('Error signing JWT token');
+      throw new Error('Error signing JWT token', { cause: e });
     }
   }
 };
